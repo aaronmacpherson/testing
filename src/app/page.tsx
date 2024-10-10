@@ -2,9 +2,9 @@
 
 import Banner from "@/components/Banner";
 import OrdersReport from "@/components/OrdersReport";
-import { useState } from "react";
-
+import { CSSProperties, useState } from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
+import { PuffLoader } from "react-spinners";
 
 export default function Home() {
 
@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main className="grid grid-rows-1 grid-cols-1 gap-0 text-content">
 
-      <LoadingOverlay show={(appState == 2) ? true : false } bgColor="#b82308" />
+      {/* <LoadingOverlay show={(appState == 2) ? true : false } bgColor="#b82308" /> */}
 
       <Banner />
 
@@ -32,8 +32,8 @@ export default function Home() {
         <div>
           <div className="text-accent text-3xl font-bold mb-2.5">Welcome loyal pizza dispatcher....</div>Click the &quot;Get Orders&quot; button below to view all current orders that need to be delivered.
           <div>
-              <button onClick={showOrders}
-                className="bg-accent border-none rounded-md p-2.5 text-white hover:bg-greyContent mt-5">Get Orders
+              <button onClick={showOrders} disabled={appState == 2}
+                className="bg-accent border-none rounded-md p-2.5 text-white enabled:hover:bg-greyContent mt-5 disabled:bg-gray-300">Get Orders
               </button>
           </div>
         </div>
@@ -48,7 +48,9 @@ export default function Home() {
       <div className="bg-greyAccent p-10">
 
         <div id="output" className="divide-dashed divide-y-2 divide-accent">
-
+          <div className={`flex items-center gap-2 ${appState == 2 ? "block" : "hidden" }`}>
+            <PuffLoader /> Loading...
+          </div>
           <OrdersReport setAppState={setAppState} appState={appState} />
 
         </div>
