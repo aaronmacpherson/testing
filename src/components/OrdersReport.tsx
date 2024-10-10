@@ -33,7 +33,7 @@ export default function OrdersReport({setAppState, appState} : {setAppState:Func
             <>
                 {orders.map(
                     (order:Order, i:number) =>
-                        <div className='pb-3'>
+                        <div key={`Order ${i}`} className='pb-3'>
                             <div className='text-[#b82308] font-bold text-2xl mb-[10px]'>Order #{order.id}</div>
                             <div className='mb-[10px]'>
                                 <div className='font-bold'><i className="fas fa-info-circle"></i> Customer Information</div>
@@ -41,16 +41,16 @@ export default function OrdersReport({setAppState, appState} : {setAppState:Func
                                 <div>{order.address}</div>
                                 <div>{order.city}</div>
                             </div>
-                            <div className='mb-[10px]'>
+                            <div key={`Size ${i}`} className='mb-[10px]'>
                                 <div className='font-bold'><i className="fas fa-pizza-slice"></i> Pizza Size</div>
                                 <div>{order.size}</div>
                             </div>
-                            <div className='mb-[10px]'>
+                            <div key={`Details ${i}`} className='mb-[10px]'>
                                 <div className='font-bold'><i className="fas fa-list-ul"></i> Order Details</div>
                                 <div>
                                     {order.toppings.map(
                                         (topping:Topping, i:number) =>
-                                            <div>{topping.topping}</div>
+                                            <div key={i}>{topping.topping}</div>
                                     )}
                             </div>
                             </div>
@@ -59,7 +59,7 @@ export default function OrdersReport({setAppState, appState} : {setAppState:Func
                                 <div>
                                     {order.notes.map(
                                         (note:Note, i:number) =>
-                                            <div>{note.note}</div>
+                                            <div key={i}>{note.note}</div>
                                     )}
                             </div>
                             </div>
