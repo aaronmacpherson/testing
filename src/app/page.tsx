@@ -46,11 +46,11 @@ export default function Home() {
       </aside>
 
       <div className="bg-greyAccent p-10">
-
-        <div id="output" className="divide-dashed divide-y-2 divide-accent">
-          <div className={`flex items-center gap-2 ${appState == 2 ? "block" : "hidden" }`}>
+      <div className={`flex items-center gap-2 ${appState == 2 ? "block" : "hidden" }`}>
             <PuffLoader /> Loading...
           </div>
+
+        <div id="output" className="divide-dashed divide-y-2 divide-accent text-[0.9rem]">
           <OrdersReport setAppState={setAppState} appState={appState} />
 
         </div>
